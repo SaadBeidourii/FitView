@@ -34,25 +34,43 @@ struct HomeView: View {
                     MetricCard(
                         title: "Steps",
                         value: "\(healthManager.steps)",
-                        icon: "figure.walk"
+                        icon: "figure.walk",
+                        indicator: .progress(
+                            current: Double(healthManager.steps),
+                            goal: 10000,
+                            color: .green
+                        )
                     )
                     
                     MetricCard(
                         title: "Active Energy",
-                        value: String(format: "%.1f kcal", healthManager.activeEnergy),
-                        icon: "flame.fill"
+                        value: String(format: "%.0f kcal", healthManager.activeEnergy),
+                        icon: "flame.fill",
+                        indicator: .progress(
+                            current: healthManager.activeEnergy,
+                            goal: 2700,
+                            color: .orange
+                        )
                     )
                     
                     MetricCard(
                         title: "Heart Rate",
                         value: String(format: "%.0f bpm", healthManager.heartRate),
-                        icon: "heart.fill"
+                        icon: "heart.fill",
+                        indicator: .zones(
+                            currentBPM: healthManager.heartRate,
+                            zones: HeartRateZone.defaultZones)
                     )
                     
                     MetricCard(
                         title: "Distance",
                         value: formattedDistance,
-                        icon: "figure.walk"
+                        icon: "figure.walk",
+                        indicator: .progress(
+                            current: healthManager.distance ,
+                            goal: 18.0,
+                            color: .blue
+                        )
                     )
                 }
                 .padding()

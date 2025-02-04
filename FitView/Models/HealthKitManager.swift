@@ -13,7 +13,7 @@ class HealthKitManager: ObservableObject {
     
     @Published var steps: Int = 0
     @Published var activeEnergy: Double = 0
-    @Published var heartRate: Double = 0
+    @Published var heartRate: Int = 0
     @Published var distance: Double = 0
     @Published var workouts: [HKWorkout] = []
     
